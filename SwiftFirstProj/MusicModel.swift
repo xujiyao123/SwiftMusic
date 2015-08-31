@@ -16,11 +16,14 @@ class MusicModel: NSObject {
     var oid: String!
     var name: String!
     var cname:String!
+    var haveNext:String!
     
-    class func loadMusicListDataWithClouse(clouse:(data:NSMutableArray) -> Void) -> Void {
+    class func loadMusicListDataWithClouse(searchStr:String ,page:Int , clouse:(data:NSMutableArray , haveNext:Int) -> Void) -> Void {
     
-        var urlStr = "http://h5.kaolafm.com/v3api/api/search?words=%E5%91%A8%E6%9D%B0%E4%BC%A6&pageSize=30&pageNum=20&searchType=0&_=1419749689828"
+        var urlStr = "http://h5.kaolafm.com/v3api/api/search?words=\(searchStr)&pageSize=30&pageNum=\(page)&searchType=0&_=1419749689828"
         var url = NSURL(string: urlStr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)! )
+        
+       println(url)
         
         var urlRequest = NSMutableURLRequest(URL: url!)
         
@@ -35,6 +38,8 @@ class MusicModel: NSObject {
                 let jsonObject : AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
                 
                 var dic = jsonObject.objectForKey("result") as! NSDictionary
+                var next = dic.objectForKey("haveNext") as! Int
+                
                var dataList = dic.objectForKey("dataList") as! NSMutableArray
                 
                 var dataSources = NSMutableArray()
@@ -49,7 +54,9 @@ class MusicModel: NSObject {
                 }
                 
                 
-                clouse(data: dataSources)
+                
+                
+                clouse(data: dataSources, haveNext: next)
             }
             
         }
@@ -67,6 +74,7 @@ class MusicPlayModel : NSObject {
     
     class func loadMusicDataWithClouse(musicID:String ,clouse:(data:NSMutableArray) -> Void) ->Void {
         
+    
         
         var urlStr = "http://v3.kaolafm.com/api/play/\(musicID)"
         var url = NSURL(string: urlStr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)! )
@@ -101,7 +109,7 @@ class MusicPlayModel : NSObject {
     
     
     
-    }
+}
     
     
     

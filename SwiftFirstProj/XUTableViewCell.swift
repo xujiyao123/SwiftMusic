@@ -52,10 +52,12 @@ class XUTableViewCell: UITableViewCell {
     }
     func drawMusicWithModel(model:MusicModel) ->Void {
         
-        titleLabel.text = model.name as String
-        subTitleLabel.text = model.cname as String
-        
-        mainImageView.setWebImageWithUrlStr(model.img)
+        titleLabel.text = model.name 
+        subTitleLabel.text = model.cname
+        if model.img != nil {
+            
+            mainImageView.setWebImageWithUrlStr(model.img)
+        }
     }
     
     

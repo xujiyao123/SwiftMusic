@@ -83,9 +83,19 @@ class MusicViewController: UIViewController ,MusicPlayerDelegate{
             
         
        vuleSilder = UISlider(frame: CGRectMake(0, 530, UIScreen.mainScreen().bounds.width, 30))
+        vuleSilder.addTarget(self, action: Selector("vuleAct:"), forControlEvents: UIControlEvents.ValueChanged)
         self.view.addSubview(vuleSilder)
        
         
+        
+    }
+    func vuleAct(sender:UISlider) {
+        
+        var progers :NSString = "\(sender.value)"
+        
+        var float:Float64 = progers.doubleValue
+        
+        MusicPlayerManager.shared.changeValueWithProgress(float)
         
     }
     

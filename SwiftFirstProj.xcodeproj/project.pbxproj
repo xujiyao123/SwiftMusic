@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7AE29A21B9422B800963DB4 /* ZLSwiftConstDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE299E1B9422B800963DB4 /* ZLSwiftConstDefine.swift */; };
+		B7AE29A31B9422B800963DB4 /* ZLSwiftFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE299F1B9422B800963DB4 /* ZLSwiftFootView.swift */; };
+		B7AE29A41B9422B800963DB4 /* ZLSwiftHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE29A01B9422B800963DB4 /* ZLSwiftHeadView.swift */; };
+		B7AE29A51B9422B800963DB4 /* ZLSwiftRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE29A11B9422B800963DB4 /* ZLSwiftRefreshExtension.swift */; };
+		B7AE29A71B9429AD00963DB4 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B7AE29A61B9429AD00963DB4 /* 1.jpg */; };
 		B7BBC3A81B8FFDDC0057564F /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBC3A71B8FFDDC0057564F /* VideoModel.swift */; };
 		B7BBC3AA1B900A460057564F /* WebImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBC3A91B900A460057564F /* WebImageCategory.swift */; };
 		B7BBC3B21B902E760057564F /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBC3B11B902E760057564F /* MusicModel.swift */; };
@@ -36,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B7AE299E1B9422B800963DB4 /* ZLSwiftConstDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLSwiftConstDefine.swift; sourceTree = "<group>"; };
+		B7AE299F1B9422B800963DB4 /* ZLSwiftFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLSwiftFootView.swift; sourceTree = "<group>"; };
+		B7AE29A01B9422B800963DB4 /* ZLSwiftHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLSwiftHeadView.swift; sourceTree = "<group>"; };
+		B7AE29A11B9422B800963DB4 /* ZLSwiftRefreshExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLSwiftRefreshExtension.swift; sourceTree = "<group>"; };
+		B7AE29A61B9429AD00963DB4 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		B7BBC3A71B8FFDDC0057564F /* VideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		B7BBC3A91B900A460057564F /* WebImageCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebImageCategory.swift; sourceTree = "<group>"; };
 		B7BBC3B11B902E760057564F /* MusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
@@ -77,6 +87,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7AE299D1B9422B800963DB4 /* ZLSwifthRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B7AE299E1B9422B800963DB4 /* ZLSwiftConstDefine.swift */,
+				B7AE299F1B9422B800963DB4 /* ZLSwiftFootView.swift */,
+				B7AE29A01B9422B800963DB4 /* ZLSwiftHeadView.swift */,
+				B7AE29A11B9422B800963DB4 /* ZLSwiftRefreshExtension.swift */,
+			);
+			path = ZLSwifthRefresh;
+			sourceTree = "<group>";
+		};
 		B7BBC3B71B9038C10057564F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +151,8 @@
 		B7D844071B8EFF3E00031168 /* SwiftFirstProj */ = {
 			isa = PBXGroup;
 			children = (
+				B7AE29A61B9429AD00963DB4 /* 1.jpg */,
+				B7AE299D1B9422B800963DB4 /* ZLSwifthRefresh */,
 				B7BBC3B91B9038F10057564F /* View */,
 				B7BBC3B81B9038DE0057564F /* Model */,
 				B7BBC3B71B9038C10057564F /* Controllers */,
@@ -250,6 +273,7 @@
 				B7D8442F1B8F195500031168 /* videos.plist in Resources */,
 				B7D844101B8EFF3E00031168 /* Main.storyboard in Resources */,
 				B7D844151B8EFF3E00031168 /* LaunchScreen.xib in Resources */,
+				B7AE29A71B9429AD00963DB4 /* 1.jpg in Resources */,
 				B7D844121B8EFF3E00031168 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,14 +293,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D8442D1B8F134300031168 /* XUTableViewCell.swift in Sources */,
+				B7AE29A41B9422B800963DB4 /* ZLSwiftHeadView.swift in Sources */,
 				B7BBC3B21B902E760057564F /* MusicModel.swift in Sources */,
+				B7AE29A51B9422B800963DB4 /* ZLSwiftRefreshExtension.swift in Sources */,
 				B7BBC3B61B9038A70057564F /* MusicListViewController.swift in Sources */,
 				B7D8440D1B8EFF3E00031168 /* ViewController.swift in Sources */,
+				B7AE29A21B9422B800963DB4 /* ZLSwiftConstDefine.swift in Sources */,
 				B7BBC3AA1B900A460057564F /* WebImageCategory.swift in Sources */,
 				B7BBC3B41B90389B0057564F /* MusicViewController.swift in Sources */,
 				B7D8440B1B8EFF3E00031168 /* AppDelegate.swift in Sources */,
 				B7BBC3A81B8FFDDC0057564F /* VideoModel.swift in Sources */,
 				B7BBC3BB1B9044650057564F /* MusicPlayerManager.swift in Sources */,
+				B7AE29A31B9422B800963DB4 /* ZLSwiftFootView.swift in Sources */,
 				B7D8442B1B8F00ED00031168 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

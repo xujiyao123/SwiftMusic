@@ -70,8 +70,8 @@ class MusicPlayerManager: NSObject {
         if( CMTimeGetSeconds(player.currentItem.duration) - CMTimeGetSeconds(player.currentItem.currentTime()) < 1 ){
             
             
+            timer.invalidate()
                  delegate?.playManagerplayIsEnd(self)
-               timer.invalidate()
           
             
         }
@@ -96,7 +96,14 @@ class MusicPlayerManager: NSObject {
     
 
     
+    func changeValueWithProgress(value:Float64) ->Void {
     
+    var timer = self.player.currentItem.asset.duration.timescale;
+    
+    var timeValue = CMTimeGetSeconds(self.player.currentItem.duration) * value;
+    player.seekToTime(CMTimeMakeWithSeconds(timeValue, timer), toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        
+    }
     
     
     

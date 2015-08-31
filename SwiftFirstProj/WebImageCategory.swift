@@ -14,17 +14,13 @@ extension UIImageView {
     
     func setWebImageWithUrlStr(urlStr:String?) ->Void {
         
+        self.image = UIImage(named: "1.jpg")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             
-            if urlStr == nil {
-                return
-            }
-            else
-            {
-             var url = NSURL(string: urlStr!)
+            var url = NSURL(string: urlStr!)
             
             var imageData = NSData(contentsOfURL: url!)
-            
+            if imageData != nil {
             var image = UIImage(data: imageData!)
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
