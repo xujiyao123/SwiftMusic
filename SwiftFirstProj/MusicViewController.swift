@@ -41,7 +41,7 @@ class MusicViewController: UIViewController ,MusicPlayerDelegate{
             
             self.datasources = data
             
-            var model = self.datasources[0] as! MusicPlayModel
+            let model = self.datasources[0] as! MusicPlayModel
          
             self.title = model.title
             self.didLoadView()
@@ -54,7 +54,7 @@ class MusicViewController: UIViewController ,MusicPlayerDelegate{
     
     
     func didLoadView() {
-        var model = datasources[0] as! MusicPlayModel
+        let model = datasources[0] as! MusicPlayModel
         
        
         picImageView = UIImageView(frame: CGRectMake(0, 0, 340, 340))
@@ -91,9 +91,9 @@ class MusicViewController: UIViewController ,MusicPlayerDelegate{
     }
     func vuleAct(sender:UISlider) {
         
-        var progers :NSString = "\(sender.value)"
+        let progers :NSString = "\(sender.value)"
         
-        var float:Float64 = progers.doubleValue
+        let float:Float64 = progers.doubleValue
         
         MusicPlayerManager.shared.changeValueWithProgress(float)
         
@@ -101,7 +101,7 @@ class MusicViewController: UIViewController ,MusicPlayerDelegate{
     
     func playMusic(sender:UIButton?) {
         
-        var model = datasources[0] as! MusicPlayModel
+        let model = datasources[0] as! MusicPlayModel
 
         MusicPlayerManager.shared.playWithModel(model)
        
@@ -112,18 +112,18 @@ class MusicViewController: UIViewController ,MusicPlayerDelegate{
     }
     func playManager(manager: MusicPlayerManager, BeginToPlayProgress progress: Double) {
         
-        var doubleStr:NSString =  "\(progress)"
+        let doubleStr:NSString =  "\(progress)"
         
         vuleSilder.value = doubleStr.floatValue
     }
     func playManagerplayIsGoOn(manager: MusicPlayerManager) {
-        println("goon")
+        print("goon")
     }
     func playManagerplayIsPause(manager: MusicPlayerManager) {
-        println("pause")
+        print("pause")
     }
     func playManagerplayIsEnd(manager: MusicPlayerManager) {
-        println("end")
+        print("end")
     }
     
     

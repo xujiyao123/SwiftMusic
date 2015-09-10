@@ -44,13 +44,13 @@ class RootViewController: UIViewController {
         
         if sender == button2{
             
-            var vc:ViewController = ViewController()
+            let vc:ViewController = ViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else
         {
            
-            var vc:MusicListViewController = MusicListViewController()
+            let vc:MusicListViewController = MusicListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             
         }

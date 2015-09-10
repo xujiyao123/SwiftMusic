@@ -15,7 +15,7 @@ class ViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSour
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+          
     
         self.title = "电影"
          self.view.backgroundColor = UIColor.whiteColor()
@@ -64,7 +64,7 @@ class ViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSour
         
         let identifier = "cell"
         
-        var cell: XUTableViewCell = tableView .dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! XUTableViewCell
+        let cell: XUTableViewCell = tableView .dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! XUTableViewCell
         
          cell.drawCellWithModel(listVideos[indexPath.row] as! VideoModel)
         
@@ -76,11 +76,11 @@ class ViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSour
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var model =  listVideos[indexPath.row] as! VideoModel
+        let model =  listVideos[indexPath.row] as! VideoModel
         
-        var url = NSURL(string: model.video_url as String)
+        let url = NSURL(string: model.video_url as String)
         
-         var moviePlayer = MPMoviePlayerViewController(contentURL: url)
+         let moviePlayer = MPMoviePlayerViewController(contentURL: url)
         
         self.presentMoviePlayerViewControllerAnimated(moviePlayer)
         

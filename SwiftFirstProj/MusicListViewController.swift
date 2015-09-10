@@ -33,11 +33,11 @@ class MusicListViewController: UIViewController ,UITableViewDelegate , UITableVi
     }
     func loadData(page:Int?) ->Void {
         
-        if (textFild.text.isEmpty) {
+        if (textFild.text!.isEmpty) {
             textFild.text = "田馥甄"
         }
         
-   MusicModel.loadMusicListDataWithClouse(textFild.text, page: page!) { (data, haveNext) -> Void in
+   MusicModel.loadMusicListDataWithClouse(textFild.text!, page: page!) { (data, haveNext) -> Void in
     
     self.dataSources.addObjectsFromArray(data as [AnyObject] )
     self.tableView.reloadData()
@@ -79,7 +79,7 @@ class MusicListViewController: UIViewController ,UITableViewDelegate , UITableVi
         
         
         
-      var  bacview = UIView(frame: CGRectMake(40, 0, 260, 44))
+      let  bacview = UIView(frame: CGRectMake(40, 0, 260, 44))
         self.navigationItem.titleView = bacview
         
         textFild = UITextField(frame: CGRectMake(40, 5, 250, 35))
@@ -107,7 +107,7 @@ class MusicListViewController: UIViewController ,UITableViewDelegate , UITableVi
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! XUTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! XUTableViewCell
         
         cell.drawMusicWithModel(dataSources[indexPath.row] as! MusicModel)
         
@@ -124,9 +124,9 @@ class MusicListViewController: UIViewController ,UITableViewDelegate , UITableVi
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var vc = MusicViewController()
+        let vc = MusicViewController()
         
-        var model = dataSources[indexPath.row] as! MusicModel
+        let model = dataSources[indexPath.row] as! MusicModel
         
         vc.musicID = model.oid
         

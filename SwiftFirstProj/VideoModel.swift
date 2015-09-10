@@ -23,13 +23,13 @@ class VideoModel: NSObject {
             
             let plistPath : String! = NSBundle.mainBundle().pathForResource("videos", ofType: "plist")
         
-            var dataArray  = NSMutableArray(contentsOfFile: plistPath)
+            let dataArray  = NSMutableArray(contentsOfFile: plistPath)
             
-            var dataSources = NSMutableArray()
+            let dataSources = NSMutableArray()
             
             for arr in dataArray! {
                 
-                var model = VideoModel()
+                let model = VideoModel()
                 model.video_img = arr.objectForKey("video_img") as! String
                 model.video_subTitle = arr.objectForKey("video_subTitle") as! String
                 model.video_title = arr.objectForKey("video_title") as! String

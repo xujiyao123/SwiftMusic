@@ -42,10 +42,10 @@ class MusicPlayerManager: NSObject {
     
     func playWithModel(model:MusicPlayModel) {
         
-       var url = NSURL(string: model.mp3Url)
+       let url = NSURL(string: model.mp3Url)
         
-        
-        player = AVPlayer(URL: url)
+      print(model.mp3Url)
+        player = AVPlayer(URL: url!)
         
         player.play()
         
@@ -56,18 +56,18 @@ class MusicPlayerManager: NSObject {
     func playing() {
         
         
-        if ((CMTimeGetSeconds(player.currentItem.duration) - CMTimeGetSeconds(player.currentItem.currentTime())) != 0) {
+        if ((CMTimeGetSeconds(player.currentItem!.duration) - CMTimeGetSeconds(player.currentItem!.currentTime())) != 0) {
             
-            var currentTime = CMTimeGetSeconds(player.currentItem.currentTime());
-            var durationTime = CMTimeGetSeconds(player.currentItem.duration);
+            var currentTime = CMTimeGetSeconds(player.currentItem!.currentTime());
+            var durationTime = CMTimeGetSeconds(player.currentItem!.duration);
             
-         var  percentage = (CMTimeGetSeconds(player.currentItem.currentTime())/CMTimeGetSeconds(player.currentItem.duration));
+         var  percentage = (CMTimeGetSeconds(player.currentItem!.currentTime())/CMTimeGetSeconds(player.currentItem!.duration));
             
                 delegate?.playManager(self, BeginToPlayProgress: percentage)
             
         
         }
-        if( CMTimeGetSeconds(player.currentItem.duration) - CMTimeGetSeconds(player.currentItem.currentTime()) < 1 ){
+        if( CMTimeGetSeconds(player.currentItem!.duration) - CMTimeGetSeconds(player.currentItem!.currentTime()) < 1 ){
             
             
             timer.invalidate()
@@ -98,9 +98,9 @@ class MusicPlayerManager: NSObject {
     
     func changeValueWithProgress(value:Float64) ->Void {
     
-    var timer = self.player.currentItem.asset.duration.timescale;
+    var timer = self.player.currentItem!.asset.duration.timescale;
     
-    var timeValue = CMTimeGetSeconds(self.player.currentItem.duration) * value;
+    var timeValue = CMTimeGetSeconds(self.player.currentItem!.duration) * value;
     player.seekToTime(CMTimeMakeWithSeconds(timeValue, timer), toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
         
     }

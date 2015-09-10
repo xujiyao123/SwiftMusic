@@ -20,12 +20,15 @@ class MusicModel: NSObject {
     
     class func loadMusicListDataWithClouse(searchStr:String ,page:Int , clouse:(data:NSMutableArray , haveNext:Int) -> Void) -> Void {
     
-        var urlStr = "http://h5.kaolafm.com/v3api/api/search?words=\(searchStr)&pageSize=30&pageNum=\(page)&searchType=0&_=1419749689828"
-        var url = NSURL(string: urlStr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)! )
+        let urlStr = "http://h5.kaolafm.com/v3api/api/search?words=\(searchStr)&pageSize=30&pageNum=\(page)&searchType=0&_=1419749689828"
+        let url = NSURL(string: urlStr.stringByAddingPercentEncodingWithAllowedCharacters(
+            NSCharacterSet(charactersInString: "").invertedSet)!)
         
-       println(url)
+
         
-        var urlRequest = NSMutableURLRequest(URL: url!)
+       print(url)
+        
+        let urlRequest = NSMutableURLRequest(URL: url!)
         
         urlRequest.timeoutInterval = 10.0
         urlRequest.HTTPMethod = "GET"
@@ -35,17 +38,17 @@ class MusicModel: NSObject {
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (respons, data, connectionError) -> Void in
             
             if (connectionError == nil) {
-                let jsonObject : AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
+                let jsonObject : AnyObject! = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                 
-                var dic = jsonObject.objectForKey("result") as! NSDictionary
-                var next = dic.objectForKey("haveNext") as! Int
+                let dic = jsonObject.objectForKey("result") as! NSDictionary
+                let next = dic.objectForKey("haveNext") as! Int
                 
-               var dataList = dic.objectForKey("dataList") as! NSMutableArray
+               let dataList = dic.objectForKey("dataList") as! NSMutableArray
                 
-                var dataSources = NSMutableArray()
+                let dataSources = NSMutableArray()
                 
                 for result in dataList {
-                    var model = MusicModel()
+                    let model = MusicModel()
                    model.img = result.objectForKey("img") as? String
                     model.oid = result.objectForKey("oid") as? String
                     model.name = result.objectForKey("name") as? String
@@ -76,10 +79,12 @@ class MusicPlayModel : NSObject {
         
     
         
-        var urlStr = "http://v3.kaolafm.com/api/play/\(musicID)"
-        var url = NSURL(string: urlStr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)! )
+        let urlStr = "http://v3.kaolafm.com/api/play/\(musicID)"
+        let url = NSURL(string: urlStr.stringByAddingPercentEncodingWithAllowedCharacters(
+            NSCharacterSet(charactersInString: "").invertedSet)!)
+
         
-        var urlRequest = NSMutableURLRequest(URL: url!)
+        let urlRequest = NSMutableURLRequest(URL: url!)
         
         urlRequest.timeoutInterval = 10.0
         urlRequest.HTTPMethod = "GET"
@@ -89,12 +94,14 @@ class MusicPlayModel : NSObject {
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (respons, data, connectionError) -> Void in
             
             if (connectionError == nil) {
-                let jsonObject : AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
                 
-                var dic = jsonObject.objectForKey("result") as! NSDictionary
-                var dataSources = NSMutableArray()
+                    let jsonObject : AnyObject! = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                 
-                var model = MusicPlayModel()
+                
+                let dic = jsonObject.objectForKey("result") as! NSDictionary
+                let dataSources = NSMutableArray()
+                
+                let model = MusicPlayModel()
                 model.title = dic.objectForKey("title") as? String
                 model.pic = dic.objectForKey("pic") as? String
                 model.mp3Url = dic.objectForKey("mp3PlayUrl") as! String
